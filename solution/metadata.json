@@ -1,0 +1,4 @@
+{
+    "image": "chesnokovmike/python-ds:retailhero2",
+    "entry_point": "gunicorn --bind 0.0.0.0:8000 server:app"
+}
