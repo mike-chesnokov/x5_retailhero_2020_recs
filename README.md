@@ -1,8 +1,8 @@
 # Решение задачи X5 Retailhero 2020 №2 (рекомендательная система)
 - 9 место
-- check nmap: 0,1467
-- public nmap: 0,1286
-- private nmap: 0,143019 
+- check NMAP: 0,1467
+- public NMAP: 0,1286
+- private NMAP: 0,143019 
 
 ## Описание задачи
 https://retailhero.ai/c/recommender_system/overview
@@ -16,10 +16,13 @@ https://retailhero.ai/c/recommender_system/overview
 
 ## Описание решения
 
+- 1 уровень: implicit.nearest_neighbours.TFIDFRecommender 
+
 
 ## Локальный запуск решения
 
-- Скачиваем docker image __chesnokovmike/python-ds:retailhero2__
+- Скачиваем docker image __chesnokovmike/python-ds:retailhero2__ 
+([Dockerfile](Dockerfile) для сборки образа на основе __geffy/ds-base:retailhero__)
 
 ```text
 docker pull chesnokovmike/python-ds:retailhero2
@@ -35,7 +38,7 @@ docker run \
     chesnokovmike/python-ds:retailhero2 \    
     gunicorn --bind 0.0.0.0:8000 server:app
 ``` 
-- в другом терминале выполняем проверку на check файле
+- В другом терминале выполняем проверку на check файле
 ```text
 python run_queries.py http://localhost:8000/recommend data/check_queries.tsv
 ```
