@@ -59,7 +59,7 @@ https://retailhero.ai/c/recommender_system/overview
         - вместо простой частоты покупок айтемов - 
         частота с убывающим весом для давних покупок
         - бленды со списком baseline_items
-    - фичи по магазинам
+    - фичи по магазинам (средние сумма покупок, число клиентов)
     - implicit.als 
     - LSTM по транзакциям
     - Ранжирование с помщью LightGBM на 2 уровне (вместо классификации)
@@ -68,12 +68,25 @@ https://retailhero.ai/c/recommender_system/overview
     - не влияло на скор отдельное рассмторение случая, 
     когда кол-во транзакций в истории = 1 (хотя такие клиенты были), 
     оставил там просто прошлые айтемы клиента ранжированные по частоте покупок
-    - 
+
+## Что в репозитории
+- [data](data): check данные
+- [rnd](rnd): ноутбуки с исследованием данных 
+и обучением моделей
+- [solution](solution): финальное решение запускаемое в докере:
+    - [model_artifacts](solution/model_artifacts): обученные модели 
+    и файлы для построения фичей
+    - [get_recs](solution/get_recs.py): предикт моделей
+    - [server](solution/server.py): АПИ предикта на flask
+    - [settings](solution/settings.py), [utils](solution/utils.py): 
+    вспомогательные константы и методы
+    - [metadata](solution/metadata.json): метаданные для проверяющей системы
+- [Dockerfile](Dockerfile) для сборки образа на основе __geffy/ds-base:retailhero__
+- [run_queries](run_queries.py): для локального тестирования решения 
  
 ## Локальный запуск решения
 
 - Скачиваем docker image __chesnokovmike/python-ds:retailhero2__ 
-([Dockerfile](Dockerfile) для сборки образа на основе __geffy/ds-base:retailhero__)
 
 ```text
 docker pull chesnokovmike/python-ds:retailhero2
